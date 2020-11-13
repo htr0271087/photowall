@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 class AddPhoto extends Component {
     constructor() {
         super();
@@ -17,14 +16,14 @@ class AddPhoto extends Component {
         };
 
         if (description && imageLink) {
-            this.props.onAddPhoto(post);
+            this.props.addPost(post);
+            this.props.onHistory.push("/");
         }
     }
 
     render() {
         return (
             <div>
-                <h1>Photowall</h1>
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder="Link" name="link" />
@@ -38,7 +37,4 @@ class AddPhoto extends Component {
     }
 }
 
-AddPhoto.propTypes = {
-    onAddPhoto: PropTypes.func.isRequired
-}
 export default AddPhoto;
